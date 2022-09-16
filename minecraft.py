@@ -255,8 +255,8 @@ class Model(object):
         func(*args)
 
     def process_queue(self):
-        start = time.clock()
-        while self.queue and time.clock() - start < 1.0 / tps:
+        start = time.perf_counter()
+        while self.queue and time.perf_counter() - start < 1.0 / tps:
             self._dequeue()
 
     def process_entire_queue(self):
